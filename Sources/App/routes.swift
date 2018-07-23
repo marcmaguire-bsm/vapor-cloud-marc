@@ -8,10 +8,6 @@ public func routes(_ router: Router) throws {
         return "Hello, world!"
     }
     
-    router.get("api", "acronyms") { req -> Future<[Acronym]> in
-        return Acronym.query(on: req).all()
-    }
-    
     //goal is to get a specific item from the database
     //takes the parameter from the request and gets the acronym from the database.
     router.get("api", "acronyms", Acronym.parameter) {
@@ -80,8 +76,13 @@ public func routes(_ router: Router) throws {
         // 2
         
         return try Acronym.query(on: req)
-        .sort(\.short, .ascending)
-        .all()
+            .sort(\.short, .ascending)
+            .all()
     }
+    
+    let acronymsController = AcronymsController()
+    // 2
+    try router.register(collection: acronymsController)
+    
 }
 
