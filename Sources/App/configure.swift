@@ -37,6 +37,8 @@ public func configure(
     //user table needs to be added first due to foriegn key constraints referencing the User table from the acronym.userID
     migrations.add(model: User.self, database: .psql)
     migrations.add(model: Acronym.self, database: .psql)
+    migrations.add(model: Category.self, database: .psql)
+    migrations.add(model: AcronymCategoryPivot.self, database: .psql)
     
     services.register(migrations)
     
