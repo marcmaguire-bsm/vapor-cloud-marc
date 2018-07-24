@@ -34,6 +34,14 @@ public func configure(
     services.register(databases)
     
     var migrations = MigrationConfig()
+    //user table needs to be added first due to foriegn key constraints referencing the User table from the acronym.userID
+    migrations.add(model: User.self, database: .psql)
     migrations.add(model: Acronym.self, database: .psql)
+    
     services.register(migrations)
+    
+    var commandConfig = CommandConfig.default()
+    commandConfig.use(RevertCommand.self, as: "revert")
+    services.register(commandConfig)
+    
 }
