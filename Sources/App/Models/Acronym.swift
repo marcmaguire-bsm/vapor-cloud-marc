@@ -29,7 +29,7 @@ extension Acronym: Migration {
     static func prepare(on connection: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: connection, closure: { builder in
             try addProperties(to: builder)
-            try builder.reference(from: \.userID, to: \User.id)
+            builder.reference(from: \.userID, to: \User.id)
         })
     }
 }

@@ -110,6 +110,16 @@ final class UserTests: XCTestCase {
         XCTAssertEqual(acronyms[0].long, acronymLong)
     }
     
+    static let allTests = [
+        ("testUsersCanBeRetrievedFromAPI",
+         testUsersCanBeRetrievedFromAPI),
+        ("testUserCanBeSavedWithAPI", testUserCanBeSavedWithAPI),
+        ("testGettingASingleUserFromTheAPI",
+         testGettingASingleUserFromTheAPI),
+        ("testGettingAUsersAcronymsFromTheAPI",
+         testGettingAUsersAcronymsFromTheAPI)
+    ]
+    
     // initial test implementation of testUsersCanBeRetreivedFromAPI
     //        // 1
     //        let revertEnvironmentArgs = ["vapor", "revert", "--all", "-y"]
